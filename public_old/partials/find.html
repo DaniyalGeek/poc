@@ -1,0 +1,123 @@
+ <script src="../js/page.js"></script>
+    <div>
+        Records count:
+        <span >{{count}}</span>
+        <br/>
+        Query time:
+        <span >{{qtime}}</span>
+        <br/>
+        <span id="error" style="color:red"></span>
+    </div>
+
+<!--                       <div id="choicesDisplay">
+                      {{ choices }}
+                   </div> -->
+                 
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        Industry:
+                    </td>
+                    <td>
+                        <span data-ng-repeat="sic in sics">
+                         <!--    <input type="text" id="sic1" ng-model="sic"  />
+                         -->
+                            <input type="text" ng-model="sic.co_sic"  ng-change="create()"  style="width:80px">
+                            <button class="remove" ng-show="$last" ng-click="removeChoice()" style="color:red;font-weight: bold;">-</button>
+                      </span>
+                        <button class="addfields" ng-click="addNewChoice()" style="color:green;font-weight: bold;">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Country:
+                    </td>
+                    <td>
+                        <span id="countryInputs">
+                            <select id="country1" ng-model="country" ng-change="create()" >
+                                <option value="" selected="">---</option>
+                                <option value="DE">DE</option>
+                                <option value="AT">AT</option>
+                            </select>
+                        </span>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        State:
+                    </td>
+
+                    <td>
+                       <!-- <span  data-ng-repeat= "state in statesM"> -->
+                     <span id="stateInputs">
+                         <h6>Press Command button and select all fields if multiple</h6>
+
+                            <select multiple ng-model="selectedValues" data-ng-options="role._id for role in states" ng-change="create()">
+                                
+                                 <option value="" >---</option> 
+                            </select>
+                        </span>
+                        <!-- <button class="addfields" ng-click="addNewState()" style="color:green;font-weight: bold;">+</button> -->
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        Employees from:
+                    </td>
+                    <td colspan="2">
+                        <input type="text" id="employeeFrom" ng-model="employeeFrom" style="width:80px;" ng-change="create()" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Employees to:
+                    </td>
+                    <td colspan="2">
+                        <input type="text" id="employeeTo" ng-model="employeeTo" style="width:80px"  ng-change="create()"  />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Turnover from:
+                    </td>
+                    <td colspan="2">
+                        <input type="text" id="turnoverFrom" ng-model="turnoverFrom" style="width:80px" ng-change="create()"  />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Turnover to:
+                    </td>
+                    <td colspan="2">
+                        <input type="text" id="turnoverTo" ng-model="turnoverTo" style="width:80px" ng-change="create()"  />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Found from:
+                    </td>
+                    <td colspan="2">
+                        <select id="foudateFrom" ng-model="foudateFrom"  ng-change="create()">
+                            <option value="">---</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Found to:
+                    </td>
+                    <td colspan="2">
+                        <select id="foudateTo" ng-model="foudateTo" ng-change="create()" >
+                            <option value="">---</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+

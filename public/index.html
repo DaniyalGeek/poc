@@ -1,0 +1,1634 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from projectnyou.com/bestdata/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 25 Oct 2017 16:32:17 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bestdata</title>
+<link rel="icon" href="images/favicon.png">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<!--font-family: 'Open Sans', sans-serif;-->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,800" rel="stylesheet"> 
+
+<script type="text/javascript" src="//platform.linkedin.com/in.js">
+    api_key: 810j7wf8a3aqa8
+    // authorize: true
+    onLoad: onLinkedInLoad
+</script>
+</head>
+
+<body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '279931795864488',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.11'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>	
+<style>
+  	.aa li { float:left; width:100%; padding:10px 0; cursor:move}
+	.prio {font-size: 14px;
+font-weight: 600;
+color: #393838;
+text-align: left;
+margin:5px 5px 0 0;
+float:left}
+.prio_dot {font-size: 14px;
+font-weight: 600;
+color: #393838;
+text-align: left;
+margin:5px 15px 0 0;
+float:left}
+.priority_tle { width:auto}
+
+  </style>	
+<div class="header clearfix">
+	<div class="container clearfix">
+		<div class="logo"><a href="javascript:void(0)"><img src="images/logo.png" alt="Bestdata" title="Bestdata" /></a></div>
+		<div class="right_header">
+			<div class="acount_area">
+				<div class="login" id="login_btn"><a href="javascript:void(0)" data-toggle="modal" data-target=".modal_login">Log In  </a></div>
+				<div class="join_us" id="join_btn"><a href="javascript:void(0)" data-toggle="modal" data-target=".modal_join">Join Now</a></div>
+				<div class="join_us" id="profile_btn"><a href="javascript:void(0)" data-toggle="modal" data-target="#updateModal" onclick="onUpdateModalOpen();">Profile</a></div>
+				<div class="join_us" id="logout_btn" onclick="onLogOut()"><a href="javascript:void(0)">Log Out</a></div>
+				<div class="clear"></div>
+			</div>
+			<div class="language">
+				<a href="javascript:void(0)" id="language">German</a>
+				<div class="open_language">
+					<ul>
+						<li><a href="javascript:void(0)" onclick="changeLang('en')">English</a></li>
+						<li><a href="javascript:void(0)" onclick="changeLang('de')">German</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="company_details_section">
+		<div class="container">
+			<form id="msform">
+			  <!-- progressbar -->
+			  <ul id="progressbar">
+				<li class="active step" id="step1_text">Select Companies</li>
+				<li class="step" id="step2_text">Choose Company Information</li>
+				<li class="step" id="step3_text">Select Decision-Makers</li>
+				<li class="step" id="step4_text">Buy & Check Out</li>
+				<li class="step" id="step5_text">Download Now</li>
+			  </ul>
+			  <!-- fieldsets -->
+			  <fieldset id="1st_step">
+				<div class="details_area clearfix">
+					<!--left_pannel start-->
+					<div class="left_pannel">
+						<div class="accordion2">
+							<!-- <h3 id="country_text">Select Country</h3> -->
+							<div class="tool_tle">
+								<span id="country_text">Select Country</span>
+								<!--tooltip start-->
+								<div class="wrapper_toll">
+									<img src="images/info_icon.png" />
+									 <div class="tooltip_show" id="country_tooltip_text">Put your Tooltip text here </div>
+								</div>
+								<!--tooltip end-->
+							</div>
+							<div class="open_details" id="country_cont">
+								<!-- load countries dynamically -->
+							</div>
+							<!-- <h3 id="state_text">Select State</h3> -->
+							<div class="tool_tle st">
+								<span id="state_text">Select State</span>
+								<!--tooltip start-->
+								<div class="wrapper_toll">
+									<img src="images/info_icon.png" />
+									 <div class="tooltip_show" id="state_tooltip_text">Put your Tooltip text here </div>
+								</div>
+								<!--tooltip end-->
+							</div>
+							<div class="open_details clearfix" id="state_cont">
+								<!-- Load states dynamically -->
+                            </div>
+							<!-- <h3 id="postcode_text">Select Postcode</h3> -->
+							<div class="tool_tle">
+								<span id="postcode_text">Select Postcode</span>
+								<!--tooltip start-->
+								<div class="wrapper_toll">
+									<img src="images/info_icon.png" />
+									 <div class="tooltip_show" id="postcode_tooltip_text">Put your Tooltip text here </div>
+								</div>
+								<!--tooltip end-->
+							</div>
+							<div class="open_details">
+								<div class="postcode">
+									<h5 id="postcode_subtext">Choose your Postcodes</h5>
+									<input type="text" name="" class="postcode_box" placeholder="8020, 1100, 80500" onfocusout="onAddPostCode()" id="postcodes" />
+								</div>
+							</div>
+							<!-- <h3 id="circle_text">Circle Search</h3>
+							<div class="open_details">
+								<div class="circle_search">
+									<div class="circle clearfix">
+										<p>Postcode</p>
+										<input type="text" name="" id="" class="circle_box" placeholder="" />
+									</div>
+									<div class="circle clearfix">
+										<p>Circle in KM</p>
+										<input type="text" name="" id="" class="circle_box" placeholder="" />
+									</div>
+								</div>
+							</div> -->
+							<!-- <h3 id="compsize_text">Select Company Size</h3> -->
+							<div class="tool_tle">
+								<span id="compsize_text">Select Company Size</span>
+								<!--tooltip start-->
+								<div class="wrapper_toll">
+									<img src="images/info_icon.png" />
+									 <div class="tooltip_show" id="compsize_tooltip_text">Put your Tooltip text here </div>
+								</div>
+								<!--tooltip end-->
+							</div>
+							<div class="open_details">
+								<div class="company_size">
+									<div class="row">
+									<div class="col-md-4">
+										<p id="emp_count_text">Count Employees (Country)</p>
+										<div class="box clearfix">
+											<input class="input_box text" type="text" name="text" placeholder="0" id="from_emp_count" onkeyup="onFromEmpCount()" />
+											<div class="seperator"><img src="images/seperator.png" alt="" /></div>
+											<input class="input_box text" id="to_emp_count" type="text" name="text" placeholder="99.999" onkeyup="onToEmpCount()" />
+										</div>
+									</div>
+									<div class="col-md-4">
+										<p id="pc_count_text">Count PC-User (Country)</p>
+										<div class="box clearfix">
+											<input class="input_box first text" type="text" name="text" placeholder="0" onkeyup="onFromPcCount()" id="from_pc_count" />
+											<div class="seperator"><img src="images/seperator.png" alt="" /></div>
+											<input class="input_box text" type="text" name="text" placeholder="99.999" onkeyup="onToPcCount()" id="to_pc_count" />
+										</div>
+									</div>
+									<div class="col-md-4">
+										<p id="turnover_count_text">Turnover in MIO EURO</p>
+										<div class="box clearfix">
+											<input class="input_box first text" type="text" name="text" placeholder="0" onkeyup="onFromTurnover()" id="from_turnover" />
+											<div class="seperator"><img src="images/seperator.png" alt="" /></div>
+											<input class="input_box text" type="text" name="text" placeholder="99.999" onkeyup="onToTurnover()" id="to_turnover" />
+										</div>
+									</div>
+									<div class="col-md-4">
+										<p id="foundedin_text">Founded In</p>
+										<div class="box last clearfix">
+											<input class="input_box first text" type="text" name="text" placeholder="1992" onkeyup="onFromFounded()" id="from_founded" />
+											<div class="seperator"><img src="images/seperator.png" alt="" /></div>
+											<input class="input_box text" type="year" name="text" placeholder="2018" onkeyup="onToFounded()" id="to_founded" />
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
+
+							<!-- <h3 id="sic_text">Select Industry Sectors (SIC - Code)</h3> -->
+							<div class="tool_tle">
+								<span id="sic_text">Select Industry Sectors (SIC - Code)</span>
+								<!--tooltip start-->
+								<div class="wrapper_toll">
+									<img src="images/info_icon.png" />
+									 <div class="tooltip_show" id="sic_tooltip_text">Put your Tooltip text here </div>
+								</div>
+								<!--tooltip end-->
+							</div>
+							<div class="open_details">
+								<div class="industry">
+									<div class="row">
+										
+										<div class="col-md-12">
+											<div class="selectall_col">
+												<input id="checkAll" type="checkbox" name="sample" class="" onchange="onSelectAllChange(this)">
+												<label for="checkAll"><span></span>Select / Unselect all</label>
+											</div>
+										</div>
+
+										<div id="sector_cont">
+											<!-- Load sectors synamically -->
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<!-- <h3 id="erp_text">Select ERP - Sysytems</h3> -->
+							<div class="tool_tle">
+								<span id="erp_text">Select ERP - Sysytems</span>
+								<!--tooltip start-->
+								<div class="wrapper_toll">
+									<img src="images/info_icon.png" />
+									 <div class="tooltip_show" id="erp_tooltip_text">Put your Tooltip text here </div>
+								</div>
+								<!--tooltip end-->
+							</div>
+							<div class="open_details open_details_erp" id="erp_cont">
+								<!-- Load ERP's dynamically -->
+							</div>
+							<!-- <h3 id="crm_text">Select CRM - Sysytems</h3> -->
+							<div class="tool_tle">
+								<span id="crm_text">Select CRM - Sysytems</span>
+								<!--tooltip start-->
+								<div class="wrapper_toll">
+									<img src="images/info_icon.png" />
+									 <div class="tooltip_show" id="crm_tooltip_text">Put your Tooltip text here </div>
+								</div>
+								<!--tooltip end-->
+							</div>
+							<div class="open_details open_details_erp" id="crm_cont">
+								<!-- Load CRM's dynamically -->
+							</div>
+						</div>
+					</div>
+					<!--left_pannel end-->
+					<!--right_pannel start-->
+					<div class="right_pannel" id="summary_box1">
+						<div class="right_pannel_col">
+							<!--tab area start-->
+								<div class="tab_area">
+									<ul class="tabs01">
+										<li><a href="#tab1" class="b_sum_text">SUMMARY</a></li>
+										<li><a href="#tab2" class="b_sel_text">Selections</a></li>
+									</ul>
+									<div class="tab_container">
+										<!--first tab area start-->
+										<div id="tab1" class="tab_content">
+											<div class="summary_col">
+												<h2 class="b_comps_text">Companies:</h2>
+												<div class="bdr_black"></div>
+												<h4 class="cal"><span class="comp_count" style="display: inline;">0.00</span> X &#8364;<span class="comp_price" style="display: inline;">0,00</span> &nbsp;&nbsp;&nbsp;= <span style="display:inline;position: relative; left: 45px;">&#8364;</span><span class="comp_tprice" style="display:inline;position: relative; left: 45px;">00000,00</span></h4>
+												<h4 class="cal_loading">Loading...</h4>
+												<div class="bdr_red"></div>
+												<div class="total"><span class="b_tot_text">Total		</span>		&#8364;<span class="t_price" style="display: inline;">00000,00</span></div>
+											</div>
+											<div class="package">
+												<h2 class="b_pack_text">Your Package:</h2>
+												<h5 class="comp_pack_text">
+													
+												</h5>
+											</div>
+
+											<div class="btt_sub btt_sub_reset" onclick="onResetSelection()"><a href="#">Reset Selection</a></div>
+
+											<div class="forword_btt clearfix">
+												<input type="button" name="next" class="next_btt btt" value="Next" onclick="onSumNextClick('next1')" />
+											</div>
+										</div>
+									   <!--first tab area end-->
+									   <!--second tab area start-->
+										<div id="tab2" class="tab_content">
+											<div class="selection_col" id="sel_box">
+												<table>
+													<thead>
+														<tr>
+															<th class="b_name_text">Name</th>
+															<th colspan="2" class="b_num_text">Number</th>
+														</tr>
+													</thead>
+													<tbody class="selection_cont">
+													<tr>
+														<td class="Selection">Selection1	</td>
+														<td class="lead">99 302  Load</td>
+														<td class="del"><img src="images/delete_icon.png" alt="" /></td>
+													</tr>
+													</tbody>
+												</table>
+												<div class="save_selact">
+													<p class="b_save_text">Save Selection as:</p>
+													<div class="save_box clearfix">
+														<input type="text" class="save_type_box" id="sb1" />
+														<input type="button" name="sb1" class=" save_type_box_btt" onclick="onSaveSelection(this)" />
+													</div>
+												</div>
+											</div>
+
+											<!-- <div id="tab6" class="tab_content3" id="log_box"> -->
+												<div class="login_col clearfix" id="log_box">
+													<p><span class="b_save_sel_text">To save Selection please</span> <a href="javascript:void(0)" data-toggle="modal" data-target=".modal_login" class="login_text">Log In</a></p>
+													<h4 id="not_member_text" style="display: inline;">Not a member yet?</h4> <h4 style="display: inline;"> <a href="javascript:void(0)" data-toggle="modal" data-target=".modal_join" id="join_now_text">Join Now</a></h4>
+												</div>
+											<!-- </div> -->
+										</div>
+									   <!--second tab area end-->
+									</div>
+								</div>
+								<!--tab area end-->
+						</div>
+					</div>
+					<!--right_pannel end-->
+				</div>
+				<input type="button" name="next" class="next action-button" value="Next" id="next1" />	
+              
+			  </fieldset>
+			  
+			  
+			  <fieldset id="2nd_step">
+				<div class="details_area clearfix">
+					<!--left_pannel start-->
+					<div class="left_pannel inner_left_pannel">
+						<div class="product_table">
+							<table>
+								<thead>
+									<tr>
+										<th class="product_text">Product</th>
+										<th class="hide_small number_text">Number</th>
+										<th class="piece_text">Price per piece</th>
+										<th class="total_text">Total</th>
+									</tr>
+								</thead>
+								<tbody id="comp_info_cont">
+									<tr>
+										<td class="product_name">
+											<div class="pro_name">
+												<div>
+													<input id="check121" type="checkbox" name="" value="">
+													<label for="check121"><span></span> Company Basic File</label>
+											    </div>
+											</div>										</td>
+										<td class="hide_small">1500	</td>
+										<td>€ 0,1	</td>
+										<td>€15.00	</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!--left_pannel end-->
+					<!--right_pannel start-->
+					<div class="right_pannel" id="summary_box2">
+						<div class="right_pannel_col" >
+							<!--tab area start-->
+								<div class="tab_area5">
+									<ul class="tabs05">
+										<li><a href="#tab7" class="b_sum_text">SUMMARY</a></li>
+										<li><a href="#tab8" class="b_sel_text">Selections</a></li>
+									</ul>
+									<div class="tab_container5">
+										<!--first tab area start-->
+										<div id="tab7" class="tab_content5">
+											<div class="summary_col">
+												<h2 class="b_comps_text">Companies:</h2>
+												<div class="bdr_black"></div>
+												<h4><span><span class="comp_count" style="display: inline;">5.302</span> X &#8364;<span class="comp_price" style="display: inline;">0,31</span>= </span> &#8364;<span class="comp_tprice" style="display: inline;">00000,00</span></h4>
+												<!-- <div class="bdr_red"></div> -->
+												<div class="comp_info_bill_cont">
+													<h2>Company Information</h2>
+													<div class="bdr_black"></div>
+													<h4 class="comp_info_bill">
+														<!-- Make bill dynamically -->
+													</h4>
+												</div>
+												<div class="bdr_red"></div>
+												<div class="total"><span><span class="b_tot_text" style="display: inline;">Total</span>		</span>		&#8364;<span style="display: inline;" class="final_total_comp_info">00000,00</span></div>
+											</div>
+											<div class="package">
+												<h2 class="b_pack_text">Your Package:</h2>
+												<p class="comp_desc"></p>
+											</div>
+											<div class="btt_sub btt_sub_reset" onclick="onResetSelection()"><a href="#">Reset Selection</a></div>
+											<div class="forword_btt clearfix">
+												<input type="button" name="previous" class="previous_btt btt" value="Back" onclick="onSumBackClick('back1')" />
+
+												<input type="button" name="next" class="next_btt btt" value="Next" onclick="onSumNextClick('next2')" />
+											</div>
+										</div>
+									   <!--first tab area end-->
+									   <!--second tab area start-->
+										<div id="tab8" class="tab_content5">
+											<div class="selection_col" id="sel_box2">
+												<table>
+													<thead>
+														<tr>
+															<th class="b_name_text">Name</th>
+															<th colspan="2" class="b_num_text">Number</th>
+														</tr>
+													</thead>
+													<tbody class="selection_cont">
+													<tr>
+														<td class="Selection">Selection1	</td>
+														<td class="lead">99 302  Load</td>
+														<td class="del"><img src="images/delete_icon.png" alt="" /></td>
+													</tr>
+												</table>
+												<div class="save_selact">
+													<p class="b_save_text">Save Selection as:</p>
+													<div class="save_box clearfix">
+														<input type="text" class="save_type_box" id="sb2" />
+														<input type="button" name="sb2" class=" save_type_box_btt" onclick="onSaveSelection(this)" />
+													</div>
+												</div>
+											</div>
+
+											<!-- <div id="tab6" class="tab_content3" id="log_box2"> -->
+												<div class="login_col clearfix" id="log_box2">
+													<p><span class="b_save_sel_text">To save Selection please</span> <a href="javascript:void(0)" data-toggle="modal" data-target=".modal_login" id="login_text">Log In</a></p>
+													<h4 id="not_member_text" style="display: inline;">Not a member yet?</h4> <h4 style="display: inline;"> <a href="javascript:void(0)" data-toggle="modal" data-target=".modal_join" id="join_now_text">Join Now</a></h4>
+												</div>
+											<!-- </div> -->
+
+										</div>
+									   <!--second tab area end-->
+									</div>
+								</div>
+								<!--tab area end-->
+						</div>
+					</div>
+					<!--right_pannel end-->
+					<div class="clear"></div>
+				</div>
+
+				<input type="button" name="previous" class="previous action-button action_button2" value="Back" id="back1" />
+				<input type="button" name="next" class="next action-button action_button2 next2" value="Next" id="next2" />	
+			  </fieldset>
+			  
+			  
+			  <fieldset id="3rd_step">
+				<div class="details_area clearfix">
+					<!--left_pannel start-->
+					<div class="left_pannel inner_left_pannel">
+						<div class="add_tab_area">
+							<ul class="add clearfix">
+								<li onclick="onDescionMakerSelect()" id="descion_maker_tab"><a href="#add_tab01" class="select_dm_text">Add Selected Dicision-Makers</a></li>
+								<li onclick="onPrioritySelect()" id="priority_tab"><a href="#add_tab02" class="select_pr_text">Select Decision-Makers by Priority</a></li>
+							</ul>
+							<div class="add_tab_container">
+								<!--first tab area start-->
+								<div id="add_tab01" class="add_content">
+									<div class="accordion2" id="descion_cont">
+										<h3>Manageing Department</h3>
+										<div class="open_details open_details2">
+											<ul class="country">
+												<li>
+													<div>
+														<input id="checkbox201" type="checkbox" name="checkbox" value="">
+														<label for="checkbox201"><span></span>Manager 1 (298) </label>
+												  </div>
+												</li>
+												<li>
+													<div>
+														<input id="checkbox202" type="checkbox" name="checkbox" value="">
+														<label for="checkbox202"><span></span>Manager 1 (10,083)</label>
+												  </div>
+												</li>
+												<li>
+													<div>
+														<input id="checkbox203" type="checkbox" name="checkbox" value="">
+														<label for="checkbox203"><span></span>Manager 1 (3,456) </label>
+												  </div>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="info_col clearfix">
+											<h2 class="add_info_text">Additional Information</h2>
+											<div class="info_col_check clearfix">
+												<div class="select_marker">
+												  <div>
+														<input id="pe_mail_cb" type="checkbox" name="checkbox" onchange="onAdditionalInfoChange(this)">
+														<label for="pe_mail_cb" class="pe_mail_text" ><span></span></label>
+												  </div>
+												</div>
+
+												<div class="select_marker">
+												  <div>
+														<input id="pe_ext_cb" type="checkbox" name="checkbox" onchange="onAdditionalInfoChange(this)">
+														<label for="pe_ext_cb" class="pe_ext_text"><span></span></label>
+												  </div>
+												</div>
+											</div>
+										</div>
+									<div class="info_col clearfix">
+										<h2 class="pricing_text">Pricing</h2>
+										<div class="pricing">
+											<ul class="clearfix" >
+												<div id="descion_price_cont"></div>
+												<li>
+													<div class="item_total"><span><span style="display: inline;" class="total_text">Total</span>:  </span>&#8364; <span class="descion_ptotal" style="display: inline;">0,000,000.00</span></div>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+								</div>
+							   <!--first tab area end-->
+							   <!--second tab area start-->
+								<div id="add_tab02" class="add_content">
+									<div class="select_decision_area clearfix">
+										<div class="info_col clearfix">
+											<h2 class="priority_text">Priority</h2>
+                                            <div class="aa">
+
+    <ul>
+    <!-- <li class="ui-state-default"> -->
+     <!-- <span class="prio">Priority</span><div class="priority_tle"> 1</div><span class="prio_dot">:</span>
+	<select class="form-control">
+		<option>1</option>
+		<option>1</option>
+		<option>1</option>
+	</select>
+
+	<span class="prio">Priority</span><div class="priority_tle"> 2</div><span class="prio_dot">:</span>
+	<select class="form-control">
+		<option>1</option>
+		<option>1</option>
+		<option>1</option>
+	</select> -->
+
+	<!-- <span class="prio">Priority</span><div class="priority_tle"> 3</div><span class="prio_dot">:</span>
+	<select class="form-control">
+		<option>1</option>
+		<option>1</option>
+		<option>1</option>
+	</select>
+
+    <li  class="ui-state-default even">
+      <span class="prio">Priority</span><div class="priority_tle"> 2</div><span class="prio_dot">:</span>
+<div class="priority_head"><p>IT Manager</p><i class="priority_icon"></i></div>
+<div class="priority_cross"><img src="images/cross.png" alt="" /></div>
+    </li> -->
+    <li class="ui-state-default">
+      <span class="prio priority_text">Priority</span><div class="priority_tle"> 1</div><span class="prio_dot">:</span>
+		<div class="priority_head">
+			<select class="form-control priority">
+				<option value="0">Select role</option>
+				
+			</select>
+		</div>
+    </li>
+    <li class="ui-state-default">
+      <span class="prio priority_text">Priority</span><div class="priority_tle"> 2</div><span class="prio_dot">:</span>
+		<div class="priority_head">
+			<select class="form-control priority">
+				<option value="0">Select role</option>
+			</select>
+		</div>
+    </li>
+    <li class="ui-state-default">
+      <span class="prio priority_text">Priority</span><div class="priority_tle"> 3</div><span class="prio_dot">:</span>
+		<div class="priority_head">
+			<select class="form-control priority">
+				<option value="0">Select role</option>
+				
+			</select>
+		</div>
+    </li>
+    <li class="ui-state-default">
+      <span class="prio priority_text">Priority</span><div class="priority_tle"> 4</div><span class="prio_dot">:</span>
+		<div class="priority_head ">
+			<select class="form-control priority">
+				<option value="0">Select role</option>
+				
+			</select>
+		</div>
+    </li>
+    <li class="ui-state-default">
+      <span class="prio priority_text">Priority</span><div class="priority_tle"> 5</div><span class="prio_dot">:</span>
+		<div class="priority_head">
+			<select class="form-control priority">
+				<option value="0">Select role</option>
+				
+			</select>
+		</div>
+    </li>
+    <!-- <li class="ui-state-default">
+     <span class="prio">Priority</span><div class="priority_tle"> 4</div><span class="prio_dot">:</span>
+<div class="priority_head"><p>Finance Manager</p><i class="priority_icon"></i></div>
+<div class="priority_cross"><img src="images/cross.png" alt="" /></div>
+    </li>
+    <li  class="ui-state-default even">
+      <span class="prio">Priority</span><div class="priority_tle"> 5</div><span class="prio_dot">:</span>
+<div class="priority_head"><p>Manageing Director</p><i class="priority_icon"></i></div>
+<div class="priority_cross"><img src="images/cross.png" alt="" /></div>
+    </li> -->
+    </ul>
+</div>
+										</div>
+										
+										
+										<div class="info_col clearfix">
+											<h2 class="add_info_text">Additional Information</h2>
+											<div class="info_col_check clearfix">
+												<div class="select_marker">
+												  <div>
+														<input id="pr_mail_cb" type="checkbox" name="checkbox" onchange="onAdditionalInfoChange(this)">
+														<label for="pr_mail_cb" class="pe_mail_text" ><span></span></label>
+												  </div>
+												</div>
+
+												<div class="select_marker">
+												  <div>
+														<input id="pr_ext_cb" type="checkbox" name="checkbox" onchange="onAdditionalInfoChange(this)">
+														<label for="pr_ext_cb" class="pe_ext_text"><span></span></label>
+												  </div>
+												</div>
+											</div>
+										</div>
+										<div class="info_col clearfix">
+											<h2 class="pricing_text">Pricing</h2>
+											<div class="pricing">
+												<ul class="clearfix">
+													<div id="pr_pricing">
+														
+													</div>
+													<li>
+														<div class="item_total"><span><span style="display: inline;" class="total_text">Total</span>: </span> &#8364; <span style="display: inline;" id="pr_ptotal">0</span></div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							   <!--second tab area end-->
+							</div>
+						</div>
+					</div>
+					<!--left_pannel end-->
+					<!--right_pannel start-->
+					<div class="right_pannel" id="summary_box3">
+						<div class="right_pannel_col">
+							<!--tab area start-->
+								<div class="tab_area6">
+									<ul class="tabs06">
+										<li><a href="#tab9" class="b_sum_text">SUMMARY</a></li>
+										<li><a href="#tab10" class="b_sel_text">Selections</a></li>
+									</ul>
+									<div class="tab_container6">
+										<!--first tab area start-->
+										<div id="tab9" class="tab_content6">
+											<div class="summary_col">
+												<h2 class="b_comps_text">Companies</h2>
+												<div class="bdr_black"></div>
+												<h4><span><span class="comp_count" style="display: inline;">5.302</span> X &#8364;<span class="comp_price" style="display: inline;">0,31</span>= </span> &#8364;<span class="comp_tprice" style="display: inline;">00000,00</span></h4>
+												<div class="comp_info_bill_cont">
+												<h2 class="comp_info_text">Company Information</h2>
+												<div class="bdr_black"></div>
+												<h4 class="comp_info_bill">
+													<!-- Load bill dynamically -->
+												</h4>
+												</div>
+												<div class="person_bill_cont">
+												<h2 class="person_text">Person</h2>
+												<div class="bdr_black"></div>
+												<h4>
+													<span><span style="display: inline;" class="b_tot_text">Total</span>		</span>		&#8364;<span id="person_sum_total" style="display: inline;">0</span>
+												</h4>
+												</div>
+												<div class="pemail_bill_cont">
+													<h2 class="email_text">Email</h2>
+													<div class="bdr_black"></div>
+													<h4 class="pemail_bill">
+														
+													</h4>
+												</div>
+												<div class="ext_bill_cont">
+													<h2 class="ext_text">Extension</h2>
+													<div class="bdr_black"></div>
+													<h4 class="ext_bill">
+														
+													</h4>
+												</div>
+												<div class="bdr_red"></div>
+												<div class="total"><span><span style="display: inline;" class="b_tot_text">Total</span>		</span>		&#8364;<span class="person_btotal" style="display: inline;">00000,00</span></div>
+											</div>
+											<div class="package package2">
+												<h2><span class="b_pack_text" style="display: inline;">Your Package</span>:</h2>
+												<h3><span class="b_comps_text" style="display: inline;">Companies</span>:</h3>
+												<p class="comp_desc"></p>
+												<h3><span class="person_text" style="display: inline;">Person</span>:</h3>
+												<p class="person_desc"></p>
+											</div>
+											<div class="btt_sub btt_sub_reset" onclick="onResetSelection()"><a href="#">Reset Selection</a></div>
+											<div class="forword_btt clearfix">
+												<input type="button" name="previous" class="previous_btt btt" value="Back" onclick="onSumBackClick('back2')" />
+												<input type="button" name="next" class="next_btt btt" value="Next" onclick="onSumNextClick('next3')" />
+											</div>
+										</div>
+									   <!--first tab area end-->
+									   <!--second tab area start-->
+										<div id="tab10" class="tab_content6">
+											<div class="selection_col" id="sel_box3">
+												<table>
+													<thead>
+														<tr>
+															<th class="b_name_text">Name</th>
+															<th colspan="2" class="b_num_text">Number</th>
+														</tr>
+													</thead>
+													<tbody class="selection_cont">
+														<!-- Load selections from server -->
+													</tbody>
+												</table>
+												<div class="save_selact">
+													<p class="b_save_text">Save Selection as:</p>
+													<div class="save_box clearfix">
+														<input type="text" class="save_type_box" id="sb3" />
+														<input type="button" name="sb3" class=" save_type_box_btt" onclick="onSaveSelection(this)" />
+													</div>
+												</div>
+											</div>
+											<div class="login_col clearfix" id="log_box3">
+												<p><span class="b_save_sel_text">To save Selection please</span> <a href="javascript:void(0)" data-toggle="modal" data-target=".modal_login" id="login_text">Log In</a></p>
+												<h4 id="not_member_text" style="display: inline;">Not a member yet?</h4> <h4 style="display: inline;"> <a href="javascript:void(0)" data-toggle="modal" data-target=".modal_join" id="join_now_text">Join Now</a></h4>
+											</div>
+										</div>
+									   <!--second tab area end-->
+									</div>
+								</div>
+								<!--tab area end-->
+						</div>
+					</div>
+					<!--right_pannel end-->
+					<div class="clear"></div>
+				</div>
+
+				<input type="button" name="previous" class="previous action-button action_button2" value="Back" id="back2" />
+				<input type="button" name="next" class="next action-button action_button2 next2" value="Next" id="next3" />	
+			  </fieldset>
+			  
+			  
+			  <fieldset id="4th_step">
+				<div class="details_area clearfix">
+					<!--left_pannel start-->
+					<div class="left_pannel inner_left_pannel ">
+						<div class="section clearfix">
+							<div class="section_col section_col_edit">
+								<div class="tile tile_edit"><span class="your_sel_text">Your Selection:</span> <span>"Name of Selections"</span></div>
+								<div class="sub_col sub_col_edit">
+									<h2 class="companies_text">Companies:</h2>
+									<ul class="clearfix" id="final_selection_cont">
+										<!-- <li><p><span>Country:</span> Austria, Germany</p></li>
+										<li><p><span>State: </span> Vienna, Bayern</p></li>
+										<li><p><span>Employees:</span>  20 - 250</p></li> -->
+									</ul>
+									
+									<h2 class="Persons">Persons:</h2>
+									<p id="final_persons_cont"></p>
+								</div>
+							</div>
+							<div class="section_col section_col2 section_col_edit">
+								<div class="tile tile_edit your_pack_text">Your Package:</div>
+								<div class="sub_col sub_col_edit">
+									<h2 class="companies_text">Companies:</h2>
+									<p class="comp_desc"></p>
+									
+									<h2 class="Persons">Persons:</h2>
+									<p class="person_desc">Person ID, First Name, Title, Function.</p>
+								</div>
+							</div>
+						</div>
+						<div class="order_table_area">
+							<div class="order_table_tle tile_edit your_offer_text">Your Offer</div>
+							<div class="product_table order_table">
+							<table>
+								<thead>
+									<tr>
+										<th class="product_text">Product</th>
+										<th class="hide_small number_text">Number</th>
+										<th class="piece_text">Price per piece</th>
+										<th class="total_text">Total</th>
+									</tr>
+								</thead>
+								<tbody id="offer_cont">
+									
+								</tbody>
+
+							</table>
+						</div>
+						</div>
+					</div>
+					<!--left_pannel end-->
+					<!--right_pannel start-->
+					<div class="right_pannel clearfix">
+						<div class="right_sub_col_details clearfix" id="box4">
+							<div class="tile tile_data"><span class="your_data_text">Your Data</span> <i><img src="images/data_icon.png" alt="" id="data_ic" style="cursor: pointer;" /></i></div>
+							<div class="clear"></div>
+							<div class="right_sub_col clearfix">
+								<div class="right_sub_col_text dada_sub_col">
+									<p><span>Person Name:</span> </p>
+									<p><span class="company_name_text">Company Name</span>: <span id="data_comp"></span></p> 
+									<p ><span class="street_text">Strret 99</span>: <span id="data_street"></span></p>
+									<p ><span class="zip_text">PerZIP Code City</span>: <span id="data_zip"></span></p>
+									<p ><span class="country_text">Country</span>: <span id="data_country"></span></p>
+									<p><span class="vat_text">VAT - Number</span>: <span id="data_vat"></span></p>
+									<!-- <div class="btt_sub"><a href="#">Download Pricing</a></div> -->
+									<!-- <div class="border"></div> -->
+									<div class="btt_sub"><a href="#" class="pay_by_inv_text">Buy & Pay by invoice</a></div>
+									<!-- <div class="btt_sub"><a href="#">Buy & Pay by Credit Card</a></div> -->
+									<!-- <div class="btt_sub"><a href="#">Buy & Pay by paypal</a></div> -->
+								</div>
+								<div class="term">
+									<div>
+										<input id="check385" type="checkbox" name="checkbox" value="">
+										<label for="check385"><span></span> I Accept the Terms and Conditions.</label>
+								  	</div>
+							  	</div>
+							  	<div class="btt_sub btt_sub_reset" onclick="onResetSelection()"><a href="#">Reset Selection</a></div>
+							  	<div class="forword_btt clearfix">
+									<input type="button" name="previous" class="previous_btt btt" value="Back" onclick="onSumBackClick('back3')" />
+									<input type="button" name="next" class="next_btt btt" value="Next" onclick="onSumNextClick('next4')" />
+								</div>
+							</div>
+						</div>
+						<div class="right_sub_col_details clearfix" id="log_box4">
+							<div class="tile your_data_text">Your Data</div>
+							<div class="right_sub_col clearfix">
+								<div class="login_col clearfix">
+									<p>To buy Selection or <br /> Download Offer please <a href="javascript:void(0)" data-toggle="modal" data-target=".modal_login">Log In</a></p>
+									<h4>Not a member yet? <a href="javascript:void(0)" data-toggle="modal" data-target=".modal_join">Join Now</a></h4>
+								</div>
+								<div class="forword_btt clearfix">
+									<input type="button" name="previous" class="previous_btt btt" value="Back" onclick="onSumBackClick('back3')" />
+									<input type="button" name="next" class="next_btt btt" value="Next" onclick="onSumNextClick('next4')" />
+								</div>
+							</div>
+						</div>					
+					</div>
+					<!--right_pannel end-->
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+				<input type="button" name="previous" class="previous action-button action_button2" value="Back" id="back3" />
+				<input type="button" name="next" class="next action-button action_button2 next2" value="Next" id="next4" />	
+			  </fieldset>
+			  
+			  
+			  
+			  <fieldset class="step_5" id="5th_step">
+				<div class="download_area">
+					<div class="download_table">
+						<table>
+								<thead>
+									<tr>
+										<th class="b_name_text">Name</th>
+										<th class="hide_mob ordered_on_text">Ordered On</th>
+										<th class="hide_mob count_of_text">
+											Count of Companies
+										</th>
+										<th class="invoice_text">Invoice</th>
+										<th class="hide_mob payment_text">Payment</th>
+										<th class="data_text">Data</th>
+										<th class="hide_mob download_on_text">Downloaded on</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Selection III	</td>
+										<td class="hide_mob">14.03.2018</td>
+										<td class="hide_mob">2.876	</td>
+										<td><a href="#"><img src="images/pdf_icon.png" alt="" /></a></td>
+										<td class="hide_mob">NO</td>
+										<td>&nbsp;</td>
+										<td class="hide_mob">&nbsp;</td>
+									</tr>
+									<tr>
+										<td>Selection II	</td>
+										<td class="hide_mob">14.03.2017	</td>
+										<td class="hide_mob">1.235	</td>
+										<td><a href="#"><img src="images/pdf_icon.png" alt="" /></a></td>
+										<td class="hide_mob">YES</td>
+										<td><a href="#"><img src="images/download_icon.png" alt="" /></a></td>
+										<td class="hide_mob">14.03.2017</td>
+									</tr>
+									<tr>
+										<td>Selection I	</td>
+										<td class="hide_mob">14.03.2016		</td>
+										<td class="hide_mob">4.678		</td>
+										<td><a href="#"><img src="images/pdf_icon.png" alt="" /></a></td>
+										<td class="hide_mob">YES</td>
+										<td><a href="#"><img src="images/download_icon.png" alt="" /></a></td>
+										<td class="hide_mob">14.03.2016</td>
+									</tr>
+								</tbody>
+							</table>
+					</div>
+				</div>
+				<input type="button" name="previous" class="previous action-button" value="Back" id="back4" />
+				<!--<input type="submit" name="submit" class="submit action-button" value="Submit" />-->
+			  </fieldset>
+			</form>
+		</div>
+	</div>
+
+
+<div class="footer">
+	<div class="container">
+		<div class="footer_menu">
+			<ul class="clearfix">
+				<li><a href="#">News </a></li>
+				<li><a href="#">Blog   </a></li>
+				<li><a href="#">Companys</a></li>
+				<li><a href="#">Social</a></li>
+			</ul>
+		</div>
+		<div class="copyright">© 2013-2017 bestdata.shop. All rights reserved. </div>
+	</div>
+</div>
+
+
+<div class="overlay_popup"></div>
+<div class="open_pop">
+	<div class="cross"><img src="images/cross_icon.png" alt="" /></div>
+	<div class="accordion_pop">
+
+		<div class="pop_details" id="sector_pop">
+			
+		</div>
+		
+	</div>
+</div>
+
+<!--login-->
+<div class="modal fade modal_login" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+	<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true"><img src="images/cross_icon_login.png" alt="" /></span>
+			</button>
+		  </div>
+      <div class="modal-body">
+        <div class="login_area clearfix">
+			<!-- <h2>LOGIN TO </h2> -->
+			<h1 class="login_bd_text">LOGIN TO BESTDATA</h1>
+			<div class="login_form clearfix">
+				<form>
+					<input type="text" placeholder="Email" id="l_email">
+					<input type="password" placeholder="Password" id="l_pass">
+					<input type="submit" class="login login_form_submit" value="Continue"
+					onclick="onLogin(event)">
+				</form>
+				<p style="color: red;"><b id="l_error"></b></p>
+				<div class="clear"></div>
+				<div class="login_term">
+					<div>
+						<!-- <input id="check385" type="checkbox" name="checkbox" value="">
+						<label for="check385"><span></span> Remember Me</label> -->
+					</div>
+				</div>
+				<div class="forget"><a class="pass" href="javascript:void(0)" data-toggle="modal" data-target=".modal_password"> Forgot Password</a></div>
+				<div class="clear"></div>
+				<div class="or"><img src="images/or_image.png" alt="" /></div>
+				<div class="social_media">
+					<div class="icon" onclick="onLinkedInLogin()"><a href="#"><img src="images/linkedin.png" alt="" /></a></div>
+					<div class="icon" onclick="onFbLogin()"><a href="#"><img src="images/facebook.png" alt="" /></a></div>
+				</div>
+				<p class="join_btt"><span style="display: inline;" class="not_member_text">Not a Member Yet?</span> <a href="javascript:void(0)" data-toggle="modal" data-target=".modal_join"><span style="display: inline;" class="join_text">Join Now</span></a></p>
+			</div>
+		</div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!--Join-->
+<div class="modal fade modal_join" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+	<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><img src="images/cross_icon_login.png" alt="" /></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="login_area clearfix">
+			<h1 id="join_bd_text">JOIN BESTDATA</h1>
+			<div class="login_form clearfix">
+				<form>
+					<input type="text" required="required" placeholder="Enter your Email" id="j_email">
+					<input type="password" placeholder="Enter your Password" id="j_pass">
+					<!-- <a href="javascript:void(0)" class="login login_form_submit" data-toggle="modal" data-target="#updateModal" onclick="onJoin(event)">Continue</a> -->
+					<input type="submit" class="login login_form_submit" value="Continue"
+					onclick="onJoin(event)">
+				</form>
+				<p style="color: red;"> <b id="j_error"></b> </p>
+				<div class="clear"></div>
+				<!-- <div class="login_term">
+					<div>
+						<input id="check385" type="checkbox" name="checkbox" value="">
+						<label for="check385"><span></span> Remember Me</label>
+					</div>
+				</div>
+				<div class="forget"><a class="pass" href="javascript:void(0)" data-toggle="modal" data-target=".modal_password">    Forgot Password</a></div> -->
+				<div class="clear"></div>
+				<div class="or"><img src="images/or_image.png" alt="" /></div>
+				<div class="social_media">
+					<div class="icon"><a href="#"><img src="images/linkedin.png" alt="" /></a></div>
+					<div class="icon"><a href="#"><img src="images/facebook.png" alt="" /></a></div>
+				</div>
+				<p class="log_btt"><span class="already_member_text" style="display: inline;">Already a Member</span> <a href="javascript:void(0)" data-toggle="modal" data-target=".modal_login" class="login_text">Sign In Now</a></p>
+			</div>
+		</div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!--update profile-->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+	<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><img src="images/cross_icon_login.png" alt="" /></span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  	
+	  	<!-- <div class="cross_btt" id="cross_edit"><img src="images/cross_icon_login.png" alt="" /></div> -->
+        <div class="login_area clearfix">
+			<!-- <h2>Update  </h2> -->
+			<h1 class="your_profile_text">YOUR PROFILE</h1>
+			<div class="login_form profile_edit clearfix">
+				<form>
+					<div class="row">
+						<div class="col-md-6">
+							<input type="text" name="" placeholder="First Name" id="u_fname">
+							<i class="edit_arrow"></i>
+						</div>
+						<div class="col-md-6">
+							<input type="text" name="" placeholder="Last Name" id="u_lname">
+							<i class="edit_arrow"></i>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<input type="text" name="" placeholder="Company Name" id="u_cname">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<input type="text" name="" placeholder="Street" id="u_street">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<input type="text" name="" placeholder="Zip Code" id="u_zip">
+						</div>
+						<div class="col-md-6">
+							<input type="text" name="" placeholder="City" id="u_city">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<input type="text" name="" placeholder="Country" id="u_country">
+						</div>
+						<div class="col-md-6">
+							<div class="pro_sel">
+								<select id="u_lang">
+									<option value="en">English</option>
+									<option value="de">German</option>
+								</select>
+								<i class="drop_arrow"></i>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<input type="text" name="" placeholder="VAT - Number" id="u_vat">
+						</div>
+					</div>
+					<p style="color: red;"><b id="u_error"></b></p>
+					<p><a class="pass" href="javascript:void(0)" data-toggle="modal" data-target=".modal_password"> Change Password</a></p>
+					<button type="button" name="login" class="login edit_form_submit save_text" onclick="onUpdateProfile(event)">Save</button>
+				</form>
+				<div class="clear"></div>
+			</div>
+		</div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!--forget password-->
+<div class="modal fade modal_password" id="modal_password" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+	  	<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true"><img src="images/cross_icon_login.png" alt="" /></span>
+			</button>
+		  </div>
+        <div class="login_area clearfix">
+			<h2>FORGOT PASSWORD </h2>
+			<h1>BESTDATA</h1>
+			<div class="login_form clearfix">
+				<form>
+					<input type="text" placeholder="Enter your email" id="fp_email">
+					<input type="submit" name="login" class="login login_form_submit" value="Continue" onclick="onForgotPassword(event)">
+				</form>
+				<p style="color: red;"><b id="fp_error"></b></p>
+				<div class="clear"></div>
+			</div>
+		</div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!--forget password-->
+<div class="modal fade modal_new_password" id="modal_new_password" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+	  	<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true"><img src="images/cross_icon_login.png" alt="" /></span>
+			</button>
+		  </div>
+        <div class="login_area clearfix">
+			<h2>NEW PASSWORD </h2>
+			<h1>BESTDATA</h1>
+			<div class="login_form clearfix">
+				<form>
+					<input type="password" placeholder="Enter password" id="np_pass">
+					<input type="password" placeholder="Enter password again" id="np_rpass">
+					<input type="submit" name="login" class="login login_form_submit" value="Change" onclick="onNewPassword(event)">
+				</form>
+				<p style="color: red;"><b id="np_error"></b></p>
+				<div class="clear"></div>
+			</div>
+		</div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+   
+ <script src='https://code.jquery.com/jquery-2.1.0.min.js'></script>
+ <!-- <script src="http://connect.facebook.net/en_US/all.js"></script> -->
+
+
+<script src="js/bootstrap.min.js"></script>
+<script src='https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
+
+
+ <script>
+ $( ".aa ul" ).sortable( {
+	update: function( event, ui ) {
+    $(this).children().each(function(index) {
+    	console.log("drag",index);
+			$(this).find('div').first().html(index + 1);
+    });
+    var prArr = [];
+    $(".priority").each(function() {
+		console.log(this.value);
+		prArr.push(this.value);
+	})
+	var compCount = $(".comp_count").first().text();
+	compCount = compCount.replace(".","");
+	compCount = compCount.replace(",",".");
+	compCount = Number(compCount);
+	compCountObj.priority = prArr;
+	compCountObj.totalComp = compCount;
+	console.log("compCountObj",JSON.stringify(compCountObj));
+	$.post( baseUrl+"dmbypriority",compCountObj, function( data ) {
+		console.log("priority data",data);
+		var prPricingHtml = "";
+		var ftPrice = 0;
+		for (key in data) {
+			var obj = data[key];
+			var roleID = obj.id;
+			if(roleID != "0"){
+				var optText = $(".pr_"+roleID).first().text();
+				var count = obj.result;
+				var price = obj.price;
+				var tprice = count*price;
+				tprice = tprice.toFixed(2);
+				tprice = Number(tprice);
+				ftPrice += tprice;
+				prPricingHtml += '<li>\n\
+										<div class="item_name" id="pr_title_'+roleID+'">'+optText+'</div>\n\
+										<div class="item_price"><span id="pr_count_'+roleID+'">'+count.toLocaleString("de-de")+'</span> X &#8364; <span id="pr_price_'+roleID+'">'+price.toLocaleString("de-de")+'</span>  = &#8364; <span id="pr_tprice_'+roleID+'">'+tprice.toLocaleString("de-de")+'</span></div>\n\
+										</li>';
+				// console.log("optText",optText);
+			}
+		}
+		// prPricingHtml += '<li>\n\
+		// 				<div class="item_total"><span>Total: </span> &#8364; '+ftPrice.toLocaleString("de-de")+'</div>\n\
+		// 				</li>';
+		$("#pr_ptotal").text(ftPrice.toLocaleString("de-de"));
+		$("#pr_pricing").html(prPricingHtml);
+	})
+  }
+});
+
+</script>
+<script src='js/jquery.easing.min.js'></script>
+<script src='js/jquery.blockUI.js'></script>
+<script  src="js/index.js"></script>
+<script  src="js/script.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+// $(".accordion2 h3").eq(1).addClass("active");
+// $(".open_details").eq(1).show();
+
+// $(".accordion2 h3").click(function(){
+// 	$(this).next(".open_details").slideToggle("slow")
+// 	.siblings(".open_details:visible").slideUp("slow");
+// 	$(this).toggleClass("active");
+// 	$(this).siblings("h3").removeClass("active");
+// });
+
+});
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+//Default Action
+$(".tab_content").hide(); //Hide all content
+$("ul.tabs01 li:first").addClass("active").show(); //Activate first tab
+$(".tab_content:first").show(); //Show first tab content
+
+//On Click Event
+$("ul.tabs01 li").click(function() {
+	$("ul.tabs01 li").removeClass("active"); //Remove any "active" class
+	$(this).addClass("active"); //Add "active" class to selected tab
+	$(".tab_content").hide(); //Hide all tab content
+	var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+	$(activeTab).fadeIn(); //Fade in the active content
+	return false;
+});
+//Default Action
+$(".tab_content2").hide(); //Hide all content
+$("ul.tabs02 li:nth-child(2)").addClass("active").show(); //Activate first tab
+$(".tab_content2:nth-child(2)").show(); //Show first tab content
+
+//On Click Event
+$("ul.tabs02 li").click(function() {
+	$("ul.tabs02 li").removeClass("active"); //Remove any "active" class
+	$(this).addClass("active"); //Add "active" class to selected tab
+	$(".tab_content2").hide(); //Hide all tab content
+	var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+	$(activeTab).fadeIn(); //Fade in the active content
+	return false;
+});
+//Default Action
+$(".tab_content3").hide(); //Hide all content
+$("ul.tabs03 li:nth-child(2)").addClass("active").show(); //Activate first tab
+$(".tab_content3:nth-child(2)").show(); //Show first tab content
+
+//On Click Event
+$("ul.tabs03 li").click(function() {
+	$("ul.tabs03 li").removeClass("active"); //Remove any "active" class
+	$(this).addClass("active"); //Add "active" class to selected tab
+	$(".tab_content3").hide(); //Hide all tab content
+	var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+	$(activeTab).fadeIn(); //Fade in the active content
+	return false;
+});
+//Default Action
+$(".tab_content5").hide(); //Hide all content
+$("ul.tabs05 li:first").addClass("active").show(); //Activate first tab
+$(".tab_content5:first").show(); //Show first tab content
+
+//On Click Event
+$("ul.tabs05 li").click(function() {
+	$("ul.tabs05 li").removeClass("active"); //Remove any "active" class
+	$(this).addClass("active"); //Add "active" class to selected tab
+	$(".tab_content5").hide(); //Hide all tab content
+	var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+	$(activeTab).fadeIn(); //Fade in the active content
+	return false;
+});
+//Default Action
+$(".tab_content6").hide(); //Hide all content
+$("ul.tabs06 li:first").addClass("active").show(); //Activate first tab
+$(".tab_content6:first").show(); //Show first tab content
+
+//On Click Event
+$("ul.tabs06 li").click(function() {
+	$("ul.tabs06 li").removeClass("active"); //Remove any "active" class
+	$(this).addClass("active"); //Add "active" class to selected tab
+	$(".tab_content6").hide(); //Hide all tab content
+	var activeTab = $(this).find("a").attr("href"); //Find the rel attribute value to identify the active tab + content
+	$(activeTab).fadeIn(); //Fade in the active content
+	return false;
+});
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+$(".close_checkbox").click(function () {
+$(".open_checkbox").css("display","block");
+});
+});
+$(document).ready(function(){
+$(".pass").click(function () {
+$(".in").removeClass("in");
+$(".modal-backdrop").css("display","none");
+$(".in").css("display","none");
+$(".fade").css("display","none");
+$("body").css("padding-right","0");
+$("body").css("padding-lrft","0");
+});
+});
+$(document).ready(function(){
+$(".join_btt").click(function () {
+$(".in").removeClass("in");
+$(".modal-backdrop").css("display","none");
+$(".in").css("display","none");
+$(".fade").css("display","none");
+$("body").css("padding-right","0");
+$("body").css("padding-lrft","0");
+});
+});
+
+$(document).ready(function(){
+$(".log_btt").click(function () {
+$(".in").removeClass("in");
+$(".modal-backdrop").css("display","none");
+$(".in").css("display","none");
+$(".fade").css("display","none");
+$("body").css("padding-right","0");
+$("body").css("padding-lrft","0");
+});
+});
+
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+$(".close_pop").click(function () {
+$(".open_pop").css("display","block");
+});
+
+$(".close_pop").click(function () {
+$(".overlay_popup").css("display","block");
+});
+
+$(".overlay_popup").click(function () {
+$(".open_pop").css("display","none");
+$(".overlay_popup").css("display","none");
+});
+
+$(".cross").click(function () {
+$(".open_pop").css("display","none");
+$(".overlay_popup").css("display","none");
+});
+
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	// $(".accordion_pop h3").eq(0).addClass("active");
+	// $(".pop_details").eq(0).show();
+
+	// $(".accordion_pop h3").click(function(){
+	// 	$(this).next(".pop_details").slideToggle("slow")
+	// 	.siblings(".pop_details:visible").slideUp("slow");
+	// 	$(this).toggleClass("active");
+	// 	$(this).siblings("h3").removeClass("active");
+	// });
+
+});
+</script>
+<script>
+$('.selectall').click(function() {
+    if ($(this).is(':checked')) {
+        $('div.first input').attr('checked', true);
+    } else {
+        $('div.first input').attr('checked', false);
+    }
+});
+
+$('.selectall2').click(function() {
+    if ($(this).is(':checked')) {
+        $('div.second input').attr('checked', true);
+    } else {
+        $('div.second input').attr('checked', false);
+    }
+});
+
+$('.selectall3').click(function() {
+    if ($(this).is(':checked')) {
+        $('div.third input').attr('checked', true);
+    } else {
+        $('div.third input').attr('checked', false);
+    }
+});
+
+$('.selectall4').click(function() {
+    if ($(this).is(':checked')) {
+        $('div.fourth input').attr('checked', true);
+    } else {
+        $('div.fourth input').attr('checked', false);
+    }
+});
+
+$('.selectall5').click(function() {
+    if ($(this).is(':checked')) {
+        $('div.fifth input').attr('checked', true);
+    } else {
+        $('div.fifth input').attr('checked', false);
+    }
+});
+$('.selectall6').click(function() {
+    if ($(this).is(':checked')) {
+        $('div.sixth input').attr('checked', true);
+    } else {
+        $('div.sixth input').attr('checked', false);
+    }
+});
+</script>
+<script>
+$(document).ready(function(){
+		$("#language").click(function () {
+		$(".open_language").slideToggle("slow");
+		});
+	});
+	
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$(".add_content").hide();
+	$("ul.add li:first").addClass("active").show(); 
+	$(".add_content:first").show();
+	
+	$("ul.add li").click(function() {
+		$("ul.add li").removeClass("active");
+		$(this).addClass("active"); 
+		$(".add_content").hide();
+		var activeTab = $(this).find("a").attr("href"); 
+		$(activeTab).fadeIn();
+		return false;
+	});
+
+});
+</script>
+ 
+ <script>
+ $('#windows').click(function() {
+    location.reload();
+});
+ </script>
+ 
+ 
+<script>
+// var select_all = document.getElementById("select_all"); //select all checkbox
+// var checkboxes = document.getElementsByClassName("checkbox"); //checkbox items
+
+// //select all checkboxes
+// select_all.addEventListener("change", function(e){
+//     for (i = 0; i < checkboxes.length; i++) {
+//         checkboxes[i].checked = select_all.checked;
+//     }
+// });
+
+
+// for (var i = 0; i < checkboxes.length; i++) {
+//     checkboxes[i].addEventListener('change', function(e){ //".checkbox" change
+//         //uncheck "select all", if one of the listed checkbox item is unchecked
+//         if(this.checked == false){
+//             select_all.checked = false;
+//         }
+//         //check "select all" if all checkbox items are checked
+//         if(document.querySelectorAll('.checkbox:checked').length == checkboxes.length){
+//             select_all.checked = true;
+//         }
+//     });
+// }
+
+</script> 
+ <script>
+//select all checkboxes
+$("#select_all2").change(function(){  //"select all" change
+    var status = this.checked; // "select all" checked status
+    $('.checkbox2').each(function(){ //iterate all listed checkbox items
+        this.checked = status; //change ".checkbox" checked status
+    });
+});
+
+$('.checkbox2').change(function(){ //".checkbox" change
+    //uncheck "select all", if one of the listed checkbox item is unchecked
+    if(this.checked == false){ //if this item is unchecked
+        $("#select_all2")[0].checked = false; //change "select all" checked status to false
+    }
+   
+    //check "select all" if all checkbox items are checked
+    if ($('.checkbox2:checked').length == $('.checkbox2').length ){
+        $("#select_all2")[0].checked = true; //change "select all" checked status to true
+    }
+});
+ </script>
+  <script>
+//select all checkboxes
+$("#select_all3").change(function(){  //"select all" change
+    var status = this.checked; // "select all" checked status
+    $('.checkbox3').each(function(){ //iterate all listed checkbox items
+        this.checked = status; //change ".checkbox" checked status
+    });
+});
+
+$('.checkbox3').change(function(){ //".checkbox" change
+    //uncheck "select all", if one of the listed checkbox item is unchecked
+    if(this.checked == false){ //if this item is unchecked
+        $("#select_all3")[0].checked = false; //change "select all" checked status to false
+    }
+   
+    //check "select all" if all checkbox items are checked
+    if ($('.checkbox3:checked').length == $('.checkbox3').length ){
+        $("#select_all3")[0].checked = true; //change "select all" checked status to true
+    }
+});
+
+//select all checkboxes
+$("#select_all4").change(function(){  //"select all" change
+    var status = this.checked; // "select all" checked status
+    $('.checkbox4').each(function(){ //iterate all listed checkbox items
+        this.checked = status; //change ".checkbox" checked status
+    });
+});
+
+$('.checkbox4').change(function(){ //".checkbox" change
+    //uncheck "select all", if one of the listed checkbox item is unchecked
+    if(this.checked == false){ //if this item is unchecked
+        $("#select_all4")[0].checked = false; //change "select all" checked status to false
+    }
+   
+    //check "select all" if all checkbox items are checked
+    if ($('.checkbox4:checked').length == $('.checkbox4').length ){
+        $("#select_all4")[0].checked = true; //change "select all" checked status to true
+    }
+});
+
+//select all checkboxes
+$("#select_all5").change(function(){  //"select all" change
+    var status = this.checked; // "select all" checked status
+    $('.checkbox5').each(function(){ //iterate all listed checkbox items
+        this.checked = status; //change ".checkbox" checked status
+    });
+});
+
+$('.checkbox5').change(function(){ //".checkbox" change
+    //uncheck "select all", if one of the listed checkbox item is unchecked
+    if(this.checked == false){ //if this item is unchecked
+        $("#select_all5")[0].checked = false; //change "select all" checked status to false
+    }
+   
+    //check "select all" if all checkbox items are checked
+    if ($('.checkbox5:checked').length == $('.checkbox5').length ){
+        $("#select_all5")[0].checked = true; //change "select all" checked status to true
+    }
+});
+
+
+//select all checkboxes
+$("#select_all6").change(function(){  //"select all" change
+    var status = this.checked; // "select all" checked status
+    $('.checkbox6').each(function(){ //iterate all listed checkbox items
+        this.checked = status; //change ".checkbox" checked status
+    });
+});
+
+$('.checkbox6').change(function(){ //".checkbox" change
+    //uncheck "select all", if one of the listed checkbox item is unchecked
+    if(this.checked == false){ //if this item is unchecked
+        $("#select_all6")[0].checked = false; //change "select all" checked status to false
+    }
+   
+    //check "select all" if all checkbox items are checked
+    if ($('.checkbox6:checked').length == $('.checkbox6').length ){
+        $("#select_all6")[0].checked = true; //change "select all" checked status to true
+    }
+});
+ </script>
+ <script>
+$("#checkAll").change(function () {
+    $(".all").prop('checked', $(this).prop("checked"));
+});
+ </script>
+</body>
+</html>

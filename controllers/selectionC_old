@@ -1,0 +1,439 @@
+var db = require('../Server');
+var mongo = require('mongodb');
+var bitcoin =function (){ 
+	var countObject = {}
+		var co_cio = 0 //11
+                                	var co_cco = 0 //6
+                                	var e_com = 0 //40
+                                	var co_ciso = 0 //19
+                                	var co_ceo = 0 // 1
+                                	var cso = 0 //27
+                                	var callcenteM = 0 //28
+                                	var cecpo = 0 //7
+                                	var erpM = 0 //20
+                                	var clo = 0 //31
+                                	var facilityM = 0 //37
+                                	var storageM = 0 //22
+                                	var cdo = 0 //14
+                                	var coo = 0 // 5
+                                	var c_academic_o = 0 //34
+                                	var c_accounting_o = 0 //9
+                                	var crm = 0 // 21 
+                                	var cmo = 0 //26
+                                	var cto = 0 //42
+                                	var cpio = 0 //8
+                                	var cfo = 0 //4
+                                	var telephonyM = 0 //24
+                                	var cco = 0 //41
+                                	var c_digital_o = 0 //13
+                                	var chro = 0 //33
+                                	var datacenter = 0 //16
+                                	var cpo = 0 //29
+                                	var cqo = 0 //32
+                                	var c_procurement_o = 0 //35
+        var post = function(req,res){
+ 					    
+			var collection = db.collection("company");
+			var obj = req.body
+			
+			var orForMainCountry =[]
+			var mainObject = {}
+				    
+	
+			if(obj.countries)
+			{
+				if(obj.countries.length>0)
+				{
+					var pre_query = new Date().getTime();
+				    for(object in obj.countries){
+					    	var andForCountryAndStates ={}
+					    	var statePostObject = {};
+							var countryPostObject = {};
+							var countryPostArr = []
+					    	var stateArr = obj.countries[object].states
+					   if(stateArr){
+					    	if(stateArr.length>0){
+					    		var filterArray = []
+						    	for(state in stateArr){
+						    		var filterObject = {}
+						    		filterObject.co_state= stateArr[state]._id
+					 	    		filterArray.push(filterObject)
+						    	}
+						    		
+				 	    		statePostObject["$or"] = filterArray
+				 	    		countryPostArr.push(statePostObject)
+							
+					    	}// end of if 	if(stateArr.length>0)
+				    }
+					    	countryPostObject.co_country = obj.countries[object]._id
+					    	countryPostArr.push(countryPostObject)
+					    	andForCountryAndStates["$and"] = countryPostArr
+					    	orForMainCountry.push(andForCountryAndStates)
+				    	
+				    	}//end of main for loop
+				    
+				    	mainObject["$or"] = orForMainCountry
+				    
+				}//if country obj >0 
+			  
+			}
+			  if (req.body.employeeFrom){
+	
+	    	mainObject.co_countemployee=  { $gte: parseInt(req.body.employeeFrom)} 
+	    }
+	    if (req.body.employeeTo){
+	
+	    	mainObject.co_countemployee=  { $lt: parseInt(req.body.employeeTo)} 
+	    }
+	     if (req.body.employeeFrom && req.body.employeeTo){
+	
+	    	mainObject.co_countemployee=  { $gte: parseInt(req.body.employeeFrom), $lt:  parseInt(req.body.employeeTo)} 
+	    }
+	    //turnover condition
+	    if (req.body.turnoverFrom){
+	
+	    	mainObject.co_turnover=  { $gte: parseInt(req.body.turnoverFrom)} 
+	    }
+	    if (req.body.turnoverTo){
+	
+	    	mainObject.co_turnover=  { $lt:parseInt(req.body.turnoverTo)} 
+	    }
+	     if (req.body.turnoverFrom && req.body.turnoverTo){
+	
+	    	mainObject.co_turnover=  { $gte: parseInt(req.body.turnoverFrom), $lt:  parseInt(req.body.turnoverTo)} 
+	    }
+	    //founddate condition
+
+	    if (req.body.foudateFrom){
+	
+	    	mainObject.co_foudate=  { $gte: parseFloat(req.body.foudateFrom)} 
+	    }
+	    if (req.body.foudateTo){
+	
+	    	mainObject.co_foudate=  { $lt: parseFloat(req.body.foudateTo)} 
+	    }
+	     if (req.body.foudateFrom && req.body.foudateTo){
+	
+	    	mainObject.co_foudate=  { $gte: parseFloat(req.body.foudateFrom), $lt:  parseFloat(req.body.foudateTo)} 
+	    }
+	    //count pc 
+	    
+	    if (req.body.countpcFrom){
+	
+	    	mainObject.co_countpc=  { $gte:parseInt(req.body.countpcFrom)} 
+	    }
+	    if (req.body.countpcTo){
+	
+	    	mainObject.co_countpc=  { $lt: req.body.countpcTo} 
+	    }
+	     if (req.body.countpcFrom && req.body.countpcTo){
+	
+	    	mainObject.co_countpc=  { $gte: parseInt(req.body.countpcFrom), $lt:  parseInt(req.body.countpcTo)} 
+	    }
+	    
+	    if(req.body.sectors||req.body.co_poscode ||req.body.co_crm||req.body.co_erp){
+	    	var finalQry = []
+	    			 if(req.body.sectors){
+	    		console.log(req.body.sectors)
+				var mainOrObject = {}
+				var mainOrArray = []
+				for(objSector in req.body.sectors){
+					var sectors=req.body.sectors
+					var co_sic_div = sectors[objSector].co_sic_div;
+				
+					var orArry = []
+					var andArry = []
+					var andArryObject= {}
+					var data_major = sectors[objSector].data_major
+					var data_inds = sectors[objSector].data_inds
+					for(objMajr in data_major){
+						var objForMajor = {}
+						if(data_major[objMajr].co_sic_majgrp.length<=3)
+								data_major[objMajr].co_sic_majgrp = '0'+data_major[objMajr].co_sic_majgrp
+						objForMajor.co_sic_majgrp =  data_major[objMajr].co_sic_majgrp
+						orArry.push(objForMajor)
+					}
+					for(objInd in data_inds){
+						var objForInd = {}
+						if(data_inds[objInd].co_sic_indgrp){
+							if(data_inds[objInd].co_sic_indgrp.length<=3)
+								data_inds[objInd].co_sic_indgrp = '0'+data_inds[objInd].co_sic_indgrp
+							objForInd.co_sic_indgrp =  data_inds[objInd].co_sic_indgrp
+						}
+						if(data_inds[objInd].co_sic4){
+							if(data_inds[objInd].co_sic4.length<=3)
+								data_inds[objInd].co_sic4 ='0'+ data_inds[objInd].co_sic4
+							objForInd.co_sic4 =  data_inds[objInd].co_sic4
+						}
+						orArry.push(objForInd)
+					}
+					var orObjectForInnerData = {}
+					if(data_inds||data_major){
+					orObjectForInnerData["$or"] = orArry
+					andArry.push(orObjectForInnerData)
+					}
+					andArry.push({co_sic_div:co_sic_div})
+				
+					andArryObject["$and"] = andArry
+					
+					mainOrArray.push(andArryObject)
+					
+			
+				}
+			 mainOrObject["$or"] = mainOrArray
+			 finalQry.push(mainOrObject)
+			// console.log(JSON.stringify(mainOrObject))
+
+	    }
+	    if(req.body.co_poscode){
+	    	
+	    	var str = req.body.co_poscode
+	    	str = str.replace(/\s/g, '')
+	    	str = str.replace(/-/g, ',')
+		    var	arr = 	str.split(",");
+		    var finalArr =[]
+		    for(obj in arr){
+		    	finalArr.push({co_poscode:arr[obj]})
+			  }
+			var qry = {};
+			qry["$or"] = finalArr
+			
+			finalQry.push( qry)
+	    		 
+	    }
+	    if(req.body.co_crm){
+	    	var str = req.body.co_crm
+	    	var arr  = []
+	    	var object = {}
+	    	for(obj in str){
+	    		arr.push({co_crm:str[obj]})
+	    	}
+	    	object["$or"] = arr;
+	    	finalQry.push(object)
+	    }  
+	    if(req.body.co_erp){
+	    	var str = req.body.co_erp
+	    	var arr  = []
+	    	var object = {}
+	    	for(obj in str){
+	    		arr.push({co_erp:str[obj]})
+	    	}
+	    	object["$or"] = arr;
+	    	finalQry.push(object)
+	    }
+	    mainObject["$and"] = finalQry
+	    }
+
+			
+				console.log(JSON.stringify(mainObject))
+		
+
+                        db.collection('company').aggregate([
+								 { $match: mainObject },
+                                 { $lookup:
+                                    {
+                                      from: 'person',
+                                      localField: '_id',
+                                      foreignField: 'co_id',
+                                      as:'person'
+                                    }
+                                  }
+                           
+                                  ,{ 
+                                    $project : { 
+                                         "_id" : 1, 
+                                        // "person._id" : 1,
+                                        // totalPersons: { $size: "$person" },
+                                        fuid: "$person.pe_fuid"
+                                      } 
+                                     }
+                                    
+                                 ], function(err, result) {
+                                 if (err) throw err;
+                                     co_cio = 0 //11
+                                     co_cco = 0 //6
+                                     e_com = 0 //40
+                                     co_ciso = 0 //19
+                                     co_ceo = 0 // 1
+                                     cso = 0 //27
+                                     callcenteM = 0 //28
+                                     cecpo = 0 //7
+                                     erpM = 0 //20
+                                     clo = 0 //31
+                                     facilityM = 0 //37
+                                     storageM = 0 //22
+                                     cdo = 0 //14
+                                     coo = 0 // 5
+                                     c_academic_o = 0 //34
+                                     c_accounting_o = 0 //9
+                                     crm = 0 // 21 
+                                     cmo = 0 //26
+                                     cto = 0 //42
+                                     cpio = 0 //8
+                                     cfo = 0 //4
+                                     telephonyM = 0 //24
+                                     cco = 0 //41
+                                     c_digital_o = 0 //13
+                                     chro = 0 //33
+                                     datacenter = 0 //16
+                                     cpo = 0 //29
+                                     cqo = 0 //32
+                                     c_procurement_o = 0 //35
+                                	
+                                	var innet_object = ""
+									for(obj in result){
+										innet_object = result[obj].fuid
+										// console.log(innet_object)
+										 for(data in innet_object){
+											if(innet_object[data]){
+										 		
+										 		 if(innet_object[data][0] == 1)
+										 			co_ceo++
+										 		else if(innet_object[data][0] == 11)
+										 			co_cio++
+										 		else if(innet_object[data][0] == 6)
+										 			co_cco++
+										 		else if(innet_object[data][0] == 40)
+										 			e_com++
+										 		else if(innet_object[data][0] == 19)
+										 			co_ciso++
+										 		else if(innet_object[data][0] == 1)
+										 			co_ceo++
+										 		else if(innet_object[data][0] == 27)
+										 			cso++
+										 		else if(innet_object[data][0] == 28)
+										 			callcenteM++
+										 		else if(innet_object[data][0] == 7)
+										 			cecpo++
+										 		else if(innet_object[data][0] == 20)
+										 			clo++
+										 		else if(innet_object[data][0] == 31)
+										 			co_ceo++
+										 		else if(innet_object[data][0] == 37)
+										 			facilityM++
+										 		else if(innet_object[data][0] == 22)
+										 			storageM++
+										 		else if(innet_object[data][0] == 14)
+										 			cdo++
+										 		else if(innet_object[data][0] == 5)
+										 			coo++
+										 		else if(innet_object[data][0] == 34)
+										 			c_academic_o++
+										 		else if(innet_object[data][0] == 9)
+										 			c_accounting_o++	
+										 		else if(innet_object[data][0] == 21)
+										 			crm++
+										 		else if(innet_object[data][0] == 42)
+										 			cto++
+										 		else if(innet_object[data][0] == 8)
+										 			cpio++
+										 		else if(innet_object[data][0] == 4)
+										 			cfo++
+										 		else if(innet_object[data][0] == 24)
+										 			telephonyM++
+										 		else if(innet_object[data][0] == 41)
+										 			cco++
+										 		else if(innet_object[data][0] == 13)
+										 			c_digital_o++
+										 		else if(innet_object[data][0] == 33)
+										 			chro++
+										 		else if(innet_object[data][0] == 16)
+										 			datacenter++
+										 		else if(innet_object[data][0] == 29)
+										 			cpo++
+										 		else if(innet_object[data][0] == 32)
+										 			cqo++
+										 		else if(innet_object[data][0] == 35)
+										 			c_procurement_o++
+										 	
+										 	 
+										 	}
+										 }
+									
+									}
+								
+									 countObject["11"]      =co_cio          
+                                     countObject["6"]      =co_cco                                               
+                                     countObject["40"]      =e_com          
+                                     countObject["19"]      =co_ciso          
+                                     countObject["1"]      =co_ceo          
+                                     countObject["27"]      =cso          
+                                     countObject["28"]      =callcenteM          
+                                     countObject["7"]      =cecpo                                               
+                                     countObject["20"]      =erpM          
+                                     countObject["31"]      =clo          
+                                     countObject["37"]      =facilityM          
+                                     countObject["22"]      =storageM          
+                                     countObject["14"]      =cdo          
+                                     countObject["5"]      =coo          
+                                     countObject["34"]      =c_academic_o          
+                                     countObject["9"]     =c_accounting_o                                               
+                                     countObject["21"]      =crm          
+                                     countObject["26"]      =cmo          
+                                     countObject["42"]      =cto          
+                                     countObject["8"]      =cpio                                               
+                                     countObject["4"]      =cfo                                               
+                                     countObject["24"]      =telephonyM          
+                                     countObject["41"]      =cco          
+                                     countObject["13"]      =c_digital_o          
+                                     countObject["33"]      =chro          
+                                     countObject["16"]      =datacenter          
+                                     countObject["29"]      =cpo          
+                                     countObject["32"]      =cqo          
+                                     countObject["35"]     =c_procurement_o           
+                                 res.json(countObject);
+                          
+                               
+                              }); 
+                              
+ 					}
+ 					var get=function (req,res) {
+                        
+                         
+ 					
+                        db.collection("department").find({}).toArray(function(err, result) {
+                                    if (err) throw err;
+                                    var object = 0;
+                                    var arr = [];
+                                    getter(object)
+                                    function getter(object){
+                                      	 db.collection("function").find({"fu_departmentid": result[object]._id}).toArray(function(err, data) {
+                                  
+                                      	        arr.push({name: result[object].title,data})
+                                      	        object++
+                                      	     if(object < result.length){
+                                      	        getter(object)
+                                      	     }else{
+                                      	          res.json(arr )
+                                      	     }
+                                      	 })
+                                      	 
+                                    }
+                                  
+                                  
+                                  });
+            	      
+ 					} 
+ 					var getOne=function (req,res) {
+                        
+                                
+                        db.collection("department").find({country_id:req.params.id}).toArray(function(err, result) {
+                                    if (err) throw err;
+                                    console.log(result);
+                                  //  db.close();
+                                  res.json(result )
+                                  });
+            	      
+ 					} 
+ 
+ 					return {  
+ 						get: 	get ,
+ 						getOne:getOne,
+ 						post:post
+ 					  
+ 					  
+ 					}  
+ 				} 
+
+ 				module.exports=bitcoin;  
+ 			

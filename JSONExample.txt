@@ -1,0 +1,83 @@
+{
+	"countries": [
+		{
+			"_id": "DE",
+			"states": [
+				{
+					"_id": "Berlin"
+				},
+				{
+					"_id": "Vorarlberg"
+				},
+				{
+					"_id": "Wien"
+				}
+			]
+		},
+		{
+			"_id": "AT",
+			"states": [
+				{
+					"_id": "Salzburg"
+				}
+			]
+		}
+	],
+	"foudateFrom": "1994",
+	"foudateTo": "2000",
+	"employeeFrom": "1",
+	"employeeTo": "100",
+	"turnoverFrom": "0,36",
+	"turnoverTo": "8",
+	"countpcFrom": "20",
+	"countpcTo": "60",
+	"co_poscode": "5400,46509",
+	"co_crm": [
+		"70517",
+		"70589"
+	],
+	"co_erp": [
+		""
+	]
+	"sectors": [
+		{
+			"co_sic_div": "A",
+			"data_major": [
+				{
+					"co_sic_majgrp": "02"
+				},
+				{
+					"co_sic_majgrp": "01"
+				}
+			],
+			"data_inds": [
+				{
+					"co_sic4": "0711"
+				},
+				{
+					"co_sic_indgrp": "072"
+				}
+			]
+		},
+		{
+			"co_sic_div": "B",
+			"data_major": [
+				{
+					"co_sic_majgrp": "12"
+				},
+				{
+					"co_sic_majgrp": "12"
+				}
+			],
+			"data_inds": [
+				{
+					"co_sic4": "1222"
+				},
+				{
+					"co_sic_indgrp": "124"
+				}
+			]
+		}
+	]
+}
+
